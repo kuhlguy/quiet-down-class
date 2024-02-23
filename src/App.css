@@ -1,38 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+
 .App {
-  text-align: center;
+  background-color: rgb(40, 44, 52);
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.light-container {
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  justify-content: space-evenly;
 }
 
-.App-link {
-  color: #61dafb;
+.controls {
+  color:#fff;
+  opacity: .5;
+  border: none;
+  background-color: transparent;
+  padding: 1rem;
+  display: inline-flex;
+}
+.controls .material-symbols-outlined {
+  font-size:3rem;
 }
 
-@keyframes App-logo-spin {
+.controls.play {
+  color:#8AFFAF;
+  margin-right:auto;
+}
+
+.controls.stop {
+  color:#f75c03;
+}
+
+.controls.settings {
+  color:#44ccff;
+}
+
+.light {
+  height:30svh;
+  width: 30svh;
+  background-color: gray;
+  border-radius: 360px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.red {
+  background-color: rgba(184, 27, 14,1);
+  animation: pulse-red 2s infinite; /* Adjust animation duration as needed */
+}
+
+.yellow {
+  background-color: darkgoldenrod;
+  animation: pulse-yellow 2s infinite; /* Adjust animation duration as needed */
+}
+
+.green {
+  background-color: green;
+  animation: pulse-green 2s infinite; /* Adjust animation duration as needed */
+}
+
+.emoji .material-symbols-outlined  {
+  color:#ffffff;
+  opacity: .5;
+  font-size:15rem;
+}
+
+@keyframes pulse-green {
+  0% {
+    box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 20px 10px rgba(0, 255, 0, 0.5); /* Adjust values for stronger effect */
+  }
+  100% {
+    box-shadow: 0 0 10px 5px rgba(0, 255, 0, 0.7);
+  }
+}
+
+@keyframes pulse-yellow {
+  0% {
+    box-shadow: 0 0 10px 5px rgba(184,134,11, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 20px 10px rgba(184,134,11, 0.5); /* Adjust values for stronger effect */
+  }
+  100% {
+    box-shadow: 0 0 10px 5px rgba(184,134,11, 0.7);
+  }
+}
+
+@keyframes pulse-red {
+  0% {
+    box-shadow: 0 0 10px 5px rgba(184, 27, 14, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 20px 10px rgba(184, 27, 14, 0.5); /* Adjust values for stronger effect */
+  }
+  100% {
+    box-shadow: 0 0 10px 5px rgba(184, 27, 14, 0.7);
+  }
+}
+.footer-buttons {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.buttons-container {
+  position:relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height:80px;
+  z-index: 20;
+}
+
+.settings-container {
+  position: absolute;
+  bottom: -500px;
+  width: 100%;
+  overflow: hidden;
+  border-top: 1px solid gainsboro;
+  border-radius: 15px 15px 0 0;
+  height: auto;
+  padding-bottom: 100px;
+  background-color: rgba(40, 44, 52, 0.9);
+  z-index:30;
+}
+
+.settings-container > * {
+  padding-left: 30px;
+}
+
+.close-btn {
+  position: absolute;
+  top:30px;
+  right:30px;
+  color:#f75c03;
+}
+
+.close-btn.material-symbols-outlined {
+  font-size: 2rem;
+}
+
+.slide-in {
+  animation: slide-in 0.5s forwards;
+}
+
+.slide-out {
+  animation: slide-out 0.5s backwards;
+}
+
+@keyframes slide-in {
   from {
-    transform: rotate(0deg);
+    bottom: -500px;
   }
   to {
-    transform: rotate(360deg);
+    bottom: 0px;
   }
+}
+
+@keyframes slide-out {
+  from {
+    bottom: 0px;
+  }
+  to {
+    bottom: -500px;
+  }
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
